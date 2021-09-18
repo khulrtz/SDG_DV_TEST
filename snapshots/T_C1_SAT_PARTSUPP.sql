@@ -3,7 +3,7 @@
 config(
 target_database='SDG_DV_TEST',
 target_schema='SDG_DV_STG',
-unique_key='',
+unique_key='ID_PARTSUPP',
 
 strategy='timestamp',
 updated_at='TS_LOADED_AT',
