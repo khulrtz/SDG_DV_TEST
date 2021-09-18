@@ -1,0 +1,19 @@
+{% snapshot T_C1_LIK_SUP_NAT%}
+{{
+config(
+target_database='SDG_DV_TEST',
+target_schema='SDG_DV_STG',
+unique_key='ID_SUP_NAT',
+
+strategy='timestamp',
+updated_at='TS_LOADED_AT',
+)
+}}
+
+SELECT HASH(S_SUPPKEY || S_NATIONKEY) AS ID_SUP_NAT,
+HASH(S_SUPPKEY) AS ID_SUPPLIER,
+HASH(S_NATIONKEY) AS ID_NATION,
+'SDG_DV_TEST_INGEST.SUPPLIER' AS ST_SOURCE_FROM,
+CURRENT_TIMESTAMP AS TS_LOADED_AT
+FROM SDG_DV_TEST_INGEST.SUPPLIER
+{% endsnapshot %}

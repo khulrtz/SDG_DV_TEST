@@ -1,0 +1,18 @@
+{% snapshot T_C1_HUB_SUPPLIER%}
+{{
+config(
+target_database='SDG_DV_TEST',
+target_schema='SDG_DV_STG',
+unique_key='ID_SUPPLIER',
+
+strategy='timestamp',
+updated_at='TS_LOADED_AT',
+)
+}}
+
+SELECT HASH(S_SUPPKEY) AS ID_SUPPLIER,
+S_SUPPKEY AS CO_SUPPLIER,
+'SDG_DV_TEST_INGEST.SUPPLIER' AS ST_SOURCE_FROM,
+CURRENT_TIMESTAMP AS TS_LOADED_AT
+FROM SDG_DV_TEST_INGEST.SUPPLIER
+{% endsnapshot %}
