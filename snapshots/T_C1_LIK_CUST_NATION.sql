@@ -3,7 +3,7 @@
 config(
 target_database='SDG_DV_TEST',
 target_schema='SDG_DV_STG',
-unique_key='TS_LOADED_AT',
+unique_key='ID_CUST_NATION',
 
 strategy='timestamp',
 updated_at='TS_LOADED_AT',
